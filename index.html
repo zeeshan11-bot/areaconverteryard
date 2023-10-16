@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marla to Square Feet and Square Feet to Marla Converter</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Yard to Square Feet and Square Feet to Yard Converter</h1>
+        <label for="value">Enter Value:</label>
+        <input type="number" id="value" step="0.01" placeholder="Enter a value" />
+        <label for="conversion-type">Select Conversion:</label>
+        <select id="conversion-type">
+            <option value="yardToSqft">Yard to Square Feet</option>
+            <option value="sqftToyard">Square Feet to Yard</option>
+        </select>
+        <button onclick="convert()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convert() {
+            const value = parseFloat(document.getElementById("value").value);
+            const conversionType = document.getElementById("conversion-type").value;
+            let result = 0;
+
+            if (conversionType === "yardToSqft") {
+                // 1 Marla = 225 square feet
+                result = value * 9;
+            } else {
+                // 1 square foot = 0.00444444 Marla (rounded to 6 decimal places)
+                result = value * 0.111111;
+            }
+
+            document.getElementById("result").textContent = `Result: ${result} ${conversionType === "yardToSqft" ? "Square Feet" : "Yard"}`;
+        }
+    </script>
+</body>
+</html>
